@@ -2,7 +2,7 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open('budgetTracker-cache-v1').then(cache => {
       console.log('Opened cache')
-      // cache all possible routes in the public folder
+      // Caches all possible routes in the public folder for easier access from browser
       return cache.addAll([
         '/',
         '/index.html',
@@ -16,6 +16,7 @@ self.addEventListener('install', event => {
   )
 })
 
+// Function to handle API requests offline
 self.addEventListener('fetch', event => {
 
   if (event.request.url.includes('/api/')) {
